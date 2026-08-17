@@ -1,0 +1,32 @@
+"use strict";
+class fixedDeposit {
+    customerName;
+    principalAmount;
+    time;
+    interestRate;
+    constructor(name, amount, rate, years) {
+        this.customerName = name;
+        this.principalAmount = amount;
+        this.interestRate = rate ?? 1;
+        this.time = years ?? 1;
+    }
+    claculateSI() {
+        const interest = (this.principalAmount * this.time * this.interestRate) / 100;
+        return interest;
+    }
+    displaydetails() {
+        console.log("FD Receipt--");
+        console.log(`Customer Name : ${this.customerName}`);
+        console.log(`Principal : ${this.principalAmount}`);
+        console.log(`Rate : ${this.interestRate}`);
+        console.log(`Tenure : ${this.time}`);
+        console.log(`Simple Interest : $${this.claculateSI()}`);
+        console.log('--------\n');
+    }
+}
+const standardFD = new fixedDeposit("Raju", 5000);
+const senorCitizen = new fixedDeposit("Seenu", 100000, 7.5, 3);
+standardFD.displaydetails();
+senorCitizen.displaydetails();
+senorCitizen.principalAmount = 50000;
+console.log(`Updated simple Interest : ${senorCitizen.claculateSI()}`);
